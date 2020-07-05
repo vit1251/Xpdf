@@ -4215,6 +4215,7 @@ TextOutputDev::TextOutputDev(char *fileName, TextOutputControl *controlA,
 
   // set up text object
   text = new TextPage(&control);
+  debugMode = gFalse;
 }
 
 TextOutputDev::TextOutputDev(TextOutputFunc func, void *stream,
@@ -4264,6 +4265,9 @@ void TextOutputDev::drawChar(GfxState *state, double x, double y,
 			     double dx, double dy,
 			     double originX, double originY,
 			     CharCode c, int nBytes, Unicode *u, int uLen) {
+  if (debugMode) {
+    printf("drawChar: code = %d\n", c);
+  }
   text->addChar(state, x, y, dx, dy, c, nBytes, u, uLen);
 }
 

@@ -289,6 +289,7 @@ private:
     transpGroupStack;
 
   int nestCount;
+  GBool debugMode;		// debug mode
 };
 
 #endif

@@ -295,8 +295,65 @@ executable('pdftotext', pdftotext_sources,
 
 #g++ -g -O2 -DHAVE_CONFIG_H -I.. -I./.. -I./../goo -I./../fofi -I./../splash -I. -I/usr/include/freetype2           -c HTMLGen.cc
 #g++ -g -O2 -DHAVE_CONFIG_H -I.. -I./.. -I./../goo -I./../fofi -I./../splash -I. -I/usr/include/freetype2           -c pdftohtml.cc
-#g++ -g -O2 -DHAVE_CONFIG_H -I.. -I./.. -I./../goo -I./../fofi -I./../splash -I. -I/usr/include/freetype2           -o pdftohtml AcroForm.o Annot.o Array.o BuiltinFont.o BuiltinFontTables.o Catalog.o CharCodeToUnicode.o CMap.o Decrypt.o Dict.o Error.o FontEncodingTables.o Form.o Function.o Gfx.o GfxFont.o GfxState.o GlobalParams.o HTMLGen.o JArithmeticDecoder.o JBIG2Stream.o JPXStream.o Lexer.o Link.o NameToCharCode.o Object.o OptionalContent.o Outline.o OutputDev.o Page.o Parser.o PDFDoc.o PDFDocEncoding.o PSTokenizer.o SecurityHandler.o SplashOutputDev.o Stream.o TextOutputDev.o TextString.o UnicodeMap.o UnicodeTypeTable.o XFAForm.o XpdfPluginAPI.o XRef.o Zoox.o pdftohtml.o -L../goo -lGoo -L../splash -lsplash -lfreetype -lz
-#	-L../fofi -lfofi -L../goo -lGoo -lpng -lm
+#g++ -g -O2 -DHAVE_CONFIG_H -I.. -I./.. -I./../goo -I./../fofi -I./../splash -I. -I/usr/include/freetype2           -o pdftohtml AcroForm.o Annot.o Array.o BuiltinFont.o BuiltinFontTables.o Catalog.o CharCodeToUnicode.o CMap.o Decrypt.o Dict.o Error.o FontEncodingTables.o Form.o Function.o Gfx.o GfxFont.o GfxState.o GlobalParams.o HTMLGen.o JArithmeticDecoder.o JBIG2Stream.o JPXStream.o Lexer.o Link.o NameToCharCode.o Object.o OptionalContent.o Outline.o OutputDev.o Page.o Parser.o PDFDoc.o PDFDocEncoding.o PSTokenizer.o SecurityHandler.o SplashOutputDev.o Stream.o TextOutputDev.o TextString.o UnicodeMap.o UnicodeTypeTable.o XFAForm.o XpdfPluginAPI.o XRef.o Zoox.o pdftohtml.o \
+#	-L../goo -lGoo -L../splash -lsplash -L../fofi -lfofi -L../goo -lGoo \
+#	-lfreetype -lz -lpng -lm
+
+pdftohtml_sources = [
+	'xpdf/AcroForm.cc',
+	'xpdf/Annot.cc',
+	'xpdf/Array.cc',
+	'xpdf/BuiltinFont.cc',
+	'xpdf/BuiltinFontTables.cc',
+	'xpdf/Catalog.cc',
+	'xpdf/CharCodeToUnicode.cc',
+	'xpdf/CMap.cc',
+	'xpdf/Decrypt.cc',
+	'xpdf/Dict.cc',
+	'xpdf/Error.cc',
+	'xpdf/FontEncodingTables.cc',
+	'xpdf/Form.cc',
+	'xpdf/Function.cc',
+	'xpdf/Gfx.cc',
+	'xpdf/GfxFont.cc',
+	'xpdf/GfxState.cc',
+	'xpdf/GlobalParams.cc',
+	'xpdf/HTMLGen.cc',
+	'xpdf/JArithmeticDecoder.cc',
+	'xpdf/JBIG2Stream.cc',
+	'xpdf/JPXStream.cc',
+	'xpdf/Lexer.cc',
+	'xpdf/Link.cc',
+	'xpdf/NameToCharCode.cc',
+	'xpdf/Object.cc',
+	'xpdf/OptionalContent.cc',
+	'xpdf/Outline.cc',
+	'xpdf/OutputDev.cc',
+	'xpdf/Page.cc',
+	'xpdf/Parser.cc',
+	'xpdf/PDFDoc.cc',
+	'xpdf/PDFDocEncoding.cc',
+	'xpdf/PSTokenizer.cc',
+	'xpdf/SecurityHandler.cc',
+	'xpdf/SplashOutputDev.cc',
+	'xpdf/Stream.cc',
+	'xpdf/TextOutputDev.cc',
+	'xpdf/TextString.cc',
+	'xpdf/UnicodeMap.cc',
+	'xpdf/UnicodeTypeTable.cc',
+	'xpdf/XFAForm.cc',
+	'xpdf/XpdfPluginAPI.cc',
+	'xpdf/XRef.cc',
+	'xpdf/Zoox.cc',
+	'xpdf/pdftohtml.cc',
+]
+
+executable('pdftohtml', pdftohtml_sources,
+		include_directories: [inc_splash,inc_goo,inc_fofi],
+		cpp_args: ['-g','-O2','-DHAVE_CONFIG_H'],
+		link_with: [libsplash,libfofi,libGoo],
+		dependencies: [png_dep],
+	)
 
 #g++ -g -O2 -DHAVE_CONFIG_H -I.. -I./.. -I./../goo -I./../fofi -I./../splash -I. -I/usr/include/freetype2           -c pdfinfo.cc
 #g++ -g -O2 -DHAVE_CONFIG_H -I.. -I./.. -I./../goo -I./../fofi -I./../splash -I. -I/usr/include/freetype2           -o pdfinfo AcroForm.o Annot.o Array.o BuiltinFont.o BuiltinFontTables.o Catalog.o CharCodeToUnicode.o CMap.o Decrypt.o Dict.o Error.o FontEncodingTables.o Form.o Function.o Gfx.o GfxFont.o GfxState.o GlobalParams.o JArithmeticDecoder.o JBIG2Stream.o JPXStream.o Lexer.o Link.o NameToCharCode.o Object.o OptionalContent.o Outline.o OutputDev.o Page.o Parser.o PDFDoc.o PDFDocEncoding.o PSTokenizer.o SecurityHandler.o Stream.o TextString.o UnicodeMap.o XFAForm.o XpdfPluginAPI.o XRef.o Zoox.o pdfinfo.o \

@@ -634,6 +634,7 @@ SplashOutputDev::SplashOutputDev(SplashColorMode colorModeA,
   transpGroupStack = NULL;
 
   nestCount = 0;
+  debugMode = gFalse;
 }
 
 void SplashOutputDev::setupScreenParams(double hDPI, double vDPI) {
@@ -1872,6 +1873,11 @@ void SplashOutputDev::drawChar(GfxState *state, double x, double y,
   } else if (doFill) {
     setOverprintMask(state->getFillColorSpace(), state->getFillOverprint(),
 		     state->getOverprintMode(), state->getFillColor());
+    if (debugMode) {
+        int fontSize = state->getFontSize();
+        double opacity = state->getFillOpacity();
+        printf("fillChar: code = %d fontSize = %d opacity = %f\n", code, fontSize, opacity);
+    }
     splash->fillChar((SplashCoord)x, (SplashCoord)y, code, font);
 
   // stroke

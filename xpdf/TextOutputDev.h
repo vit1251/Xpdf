@@ -583,6 +583,7 @@ private:
   TextPage *text;		// text for the current page
   TextOutputControl control;	// formatting parameters
   GBool ok;			// set up ok?
+  GBool debugMode;		// debug mode
 };
 
 #endif
