@@ -1,5 +1,4 @@
-Xpdf
-====
+# Xpdf
 
 version 3.04
 2014-may-28
@@ -11,8 +10,7 @@ Email: derekn@foolabs.com
 WWW: http://www.foolabs.com/xpdf/
 
 
-Compiling xpdf
---------------
+## Compiling xpdf
 
 Xpdf is written in C++ (with a little bit of C).  It should work with
 any ANSI-compliant C++ and C compilers.  The systems and compilers
@@ -23,10 +21,7 @@ Xpdf requires the Motif (or Lesstif) toolkit.
 The following notes give specific instructions for compiling on
 different systems.
 
-
-***************
-***  Linux  ***
-***************
+### Linux
 
 * Install FreeType 2.  WARNING: You must have
   version 2.0.5 or newer.
